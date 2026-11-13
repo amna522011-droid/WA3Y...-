@@ -1,0 +1,1375 @@
+
+/* =========================================
+   WA3Y - DIGITAL PLAYGROUND
+   Main Stylesheet
+========================================= */
+
+/* ---------- 1. ROOT & RESET ---------- */
+
+:root {
+    --bg: #101323;
+    --bg-secondary: #151a2d;
+    --surface: #1b2236;
+    --surface-light: #232c43;
+
+    --primary: #62e4d2;
+    --primary-dark: #35bcae;
+    --secondary: #b29bff;
+    --pink: #f49ac2;
+    --yellow: #f5d47a;
+
+    --text: #f4f5fa;
+    --muted: #a6b0c4;
+
+    --border: rgba(255, 255, 255, 0.08);
+
+    --gradient: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    --font-ar: "Cairo", sans-serif;
+    --font-en: "Outfit", sans-serif;
+
+    --container-width: 1180px;
+
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 30px;
+
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: var(--font-ar);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+body,
+button,
+input {
+    font-family: var(--font-ar);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: min(90%, var(--container-width));
+    margin: auto;
+}
+
+::selection {
+    background: var(--primary);
+    color: var(--bg);
+}
+
+
+/* ---------- 2. NAVBAR ---------- */
+
+.navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(16, 19, 35, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    font-family: var(--font-en);
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+    color: var(--bg);
+    background: var(--gradient);
+
+    font-size: 27px;
+    box-shadow: 0 0 25px rgba(98, 228, 210, 0.2);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+
+    bottom: -8px;
+    right: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.language-btn {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+    color: var(--primary);
+
+    font-family: var(--font-en);
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.language-btn:hover {
+    background: var(--primary);
+    color: var(--bg);
+}
+
+.login-btn {
+    padding: 10px 19px;
+
+    border: 1px solid rgba(98, 228, 210, 0.4);
+    border-radius: 12px;
+
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.login-btn:hover {
+    background: var(--primary);
+    color: var(--bg);
+}
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+    background: var(--surface);
+
+    font-size: 22px;
+}
+
+
+/* ---------- 3. BUTTONS ---------- */
+
+.primary-btn,
+.secondary-btn {
+    min-height: 52px;
+    padding: 12px 25px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    transition: var(--transition);
+}
+
+.primary-btn {
+    background: var(--gradient);
+    color: #101323;
+
+    box-shadow: 0 8px 25px rgba(98, 228, 210, 0.12);
+}
+
+.primary-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(98, 228, 210, 0.25);
+}
+
+.secondary-btn {
+    border: 1px solid rgba(178, 155, 255, 0.4);
+    color: var(--secondary);
+    background: rgba(178, 155, 255, 0.06);
+}
+
+.secondary-btn:hover {
+    background: rgba(178, 155, 255, 0.15);
+    transform: translateY(-4px);
+}
+
+
+/* ---------- 4. HERO SECTION ---------- */
+
+.hero {
+    min-height: 650px;
+    padding: 95px 0 110px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(98, 228, 210, 0.07),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(178, 155, 255, 0.09),
+            transparent 35%
+        );
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-label,
+.section-label {
+    display: inline-block;
+
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 700;
+
+    padding: 7px 15px;
+    border-radius: 30px;
+
+    background: rgba(98, 228, 210, 0.08);
+    border: 1px solid rgba(98, 228, 210, 0.15);
+}
+
+.hero h1 {
+    margin: 25px 0 18px;
+
+    font-size: clamp(38px, 5vw, 61px);
+    line-height: 1.35;
+    font-weight: 800;
+}
+
+.hero h1 span,
+.section-heading h2 span,
+.detective-content h2 span,
+.cta-content h2 span {
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-content > p {
+    max-width: 540px;
+    margin-bottom: 30px;
+
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 2;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.hero-note {
+    margin-top: 30px;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hero-note span {
+    color: var(--primary);
+    margin-left: 7px;
+}
+
+
+/* ---------- 5. HERO VISUAL ---------- */
+
+.hero-visual {
+    min-height: 420px;
+
+    display: grid;
+    place-items: center;
+
+    position: relative;
+}
+
+.visual-glow {
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    background: var(--secondary);
+    opacity: 0.12;
+
+    filter: blur(100px);
+    border-radius: 50%;
+}
+
+.fingerprint-card {
+    width: min(100%, 380px);
+    height: 370px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(98, 228, 210, 0.2);
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35, 44, 67, 0.95),
+            rgba(27, 34, 54, 0.75)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25),
+        inset 0 0 40px rgba(98, 228, 210, 0.04);
+}
+
+.fingerprint-card::before,
+.fingerprint-card::after {
+    content: "";
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border: 1px solid rgba(98, 228, 210, 0.1);
+    border-radius: 50%;
+}
+
+.fingerprint-card::before {
+    top: -120px;
+    right: -80px;
+}
+
+.fingerprint-card::after {
+    bottom: -140px;
+    left: -90px;
+}
+
+.fingerprint {
+    width: 190px;
+    height: 190px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: var(--primary);
+    font-size: 150px;
+    line-height: 1;
+
+    text-shadow: 0 0 35px rgba(98, 228, 210, 0.5);
+
+    animation: fingerprintPulse 3s ease-in-out infinite;
+}
+
+.visual-caption {
+    margin-top: 15px;
+
+    color: var(--muted);
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.floating-card {
+    position: absolute;
+
+    padding: 11px 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    background: rgba(35, 44, 67, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    animation: floating 4s ease-in-out infinite;
+}
+
+.card-one {
+    top: 65px;
+    right: -20px;
+    color: var(--primary);
+}
+
+.card-two {
+    bottom: 65px;
+    left: -25px;
+    color: var(--secondary);
+    animation-delay: 1s;
+}
+
+
+/* ---------- 6. SECTION GENERAL ---------- */
+
+.awareness,
+.learning,
+.how-it-works {
+    padding: 100px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-heading h2 {
+    margin-top: 18px;
+
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+}
+
+.section-heading > p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* ---------- 7. AWARENESS FEATURES ---------- */
+
+.awareness {
+    background: var(--bg-secondary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    padding: 35px 28px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    background: var(--surface);
+
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-9px);
+    border-color: rgba(98, 228, 210, 0.4);
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 17px;
+    background: rgba(98, 228, 210, 0.1);
+
+    font-size: 27px;
+}
+
+.feature-card:nth-child(2) .feature-icon {
+    background: rgba(178, 155, 255, 0.12);
+}
+
+.feature-card:nth-child(3) .feature-icon {
+    background: rgba(244, 154, 194, 0.12);
+}
+
+.feature-card h3 {
+    margin: 22px 0 10px;
+    font-size: 19px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 2;
+}
+
+
+/* ---------- 8. LEARNING / COURSES ---------- */
+
+.learning {
+    background: var(--bg);
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.course-card {
+    padding: 27px 22px;
+
+    position: relative;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    transition: var(--transition);
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(178, 155, 255, 0.4);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.course-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 16px;
+    font-size: 25px;
+}
+
+.course-icon.cyan {
+    background: rgba(98, 228, 210, 0.12);
+}
+
+.course-icon.purple {
+    background: rgba(178, 155, 255, 0.12);
+}
+
+.course-icon.pink {
+    background: rgba(244, 154, 194, 0.12);
+}
+
+.course-icon.yellow {
+    background: rgba(245, 212, 122, 0.12);
+}
+
+.course-level {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+
+    padding: 4px 11px;
+
+    border-radius: 20px;
+
+    color: var(--secondary);
+    background: rgba(178, 155, 255, 0.1);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.course-card h3 {
+    margin: 23px 0 10px;
+    font-size: 17px;
+}
+
+.course-card p {
+    min-height: 75px;
+
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.course-card > a {
+    display: inline-block;
+    margin-top: 18px;
+
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 800;
+
+    transition: var(--transition);
+}
+
+.course-card > a:hover {
+    color: var(--secondary);
+    transform: translateX(-5px);
+}
+
+.section-action {
+    margin-top: 45px;
+    text-align: center;
+}
+
+
+/* ---------- 9. CYBER DETECTIVE ---------- */
+
+.detective {
+    padding: 100px 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(178, 155, 255, 0.1),
+            transparent 35%
+        ),
+        var(--bg-secondary);
+}
+
+.detective-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.detective-content h2 {
+    margin: 20px 0;
+
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.5;
+}
+
+.detective-content > p {
+    max-width: 500px;
+    margin-bottom: 28px;
+
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 2;
+}
+
+
+/* ---------- 10. DETECTIVE VISUAL ---------- */
+
+.detective-visual {
+    display: grid;
+    place-items: center;
+}
+
+.detective-box {
+    width: min(100%, 390px);
+
+    padding: 0 0 25px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(178, 155, 255, 0.2);
+    border-radius: 22px;
+
+    background: var(--surface);
+
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+
+    transform: rotate(-2deg);
+    transition: var(--transition);
+}
+
+.detective-box:hover {
+    transform: rotate(0deg) translateY(-7px);
+}
+
+.detective-top {
+    height: 43px;
+    padding: 0 17px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    background: var(--surface-light);
+}
+
+.detective-top span {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+    background: var(--pink);
+}
+
+.detective-top span:nth-child(2) {
+    background: var(--yellow);
+}
+
+.detective-top span:nth-child(3) {
+    background: var(--primary);
+}
+
+.detective-message {
+    padding: 30px 25px;
+    text-align: center;
+}
+
+.message-icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.detective-message h3 {
+    font-size: 20px;
+}
+
+.detective-message p {
+    margin: 12px 0;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.fake-link {
+    display: block;
+    margin: 18px auto;
+
+    width: fit-content;
+    padding: 8px 15px;
+
+    border-radius: 8px;
+
+    background: rgba(244, 154, 194, 0.1);
+    color: var(--pink);
+
+    font-family: var(--font-en);
+    font-size: 12px;
+}
+
+.message-question {
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: rgba(178, 155, 255, 0.1);
+    color: var(--secondary);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* ---------- 11. HOW IT WORKS ---------- */
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.step-card {
+    padding: 32px 27px;
+
+    position: relative;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    background: var(--surface);
+
+    transition: var(--transition);
+}
+
+.step-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(98, 228, 210, 0.35);
+}
+
+.step-number {
+    position: absolute;
+    top: 20px;
+    left: 22px;
+
+    color: rgba(178, 155, 255, 0.35);
+
+    font-family: var(--font-en);
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 17px;
+
+    background: rgba(98, 228, 210, 0.1);
+    font-size: 27px;
+}
+
+.step-card:nth-child(2) .step-icon {
+    background: rgba(178, 155, 255, 0.12);
+}
+
+.step-card:nth-child(3) .step-icon {
+    background: rgba(244, 154, 194, 0.12);
+}
+
+.step-card h3 {
+    margin: 20px 0 8px;
+    font-size: 19px;
+}
+
+.step-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+
+/* ---------- 12. FINAL CTA ---------- */
+
+.final-cta {
+    padding: 90px 0;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(98, 228, 210, 0.11),
+            transparent 65%
+        ),
+        var(--bg);
+}
+
+.cta-content h2 {
+    margin: 20px 0 12px;
+
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.5;
+}
+
+.cta-content > p {
+    max-width: 600px;
+    margin: 0 auto 28px;
+
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* ---------- 13. FOOTER ---------- */
+
+.footer {
+    padding-top: 65px;
+
+    background: #0c0f1c;
+    border-top: 1px solid var(--border);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 50px;
+
+    padding-bottom: 50px;
+}
+
+.footer-brand > p {
+    max-width: 280px;
+    margin-top: 18px;
+
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links h4 {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.footer-links a {
+    width: fit-content;
+
+    color: var(--muted);
+    font-size: 13px;
+
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+    transform: translateX(-4px);
+}
+
+.footer-bottom {
+    min-height: 65px;
+    padding: 15px 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* ---------- 14. ANIMATIONS ---------- */
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes fingerprintPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 1;
+    }
+}
+
+
+/* ---------- 15. RESPONSIVE: TABLETS ---------- */
+
+@media (max-width: 1024px) {
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero-container {
+        gap: 25px;
+    }
+
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detective-container {
+        gap: 35px;
+    }
+
+}
+
+
+/* ---------- 16. RESPONSIVE: MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+    .nav-container {
+        min-height: 72px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+
+        top: 72px;
+        right: 5%;
+        left: 5%;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 12px;
+
+        border: 1px solid var(--border);
+        border-radius: 17px;
+
+        background: var(--surface);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(98, 228, 210, 0.08);
+        border-radius: 10px;
+    }
+
+    .login-btn {
+        display: none;
+    }
+
+    .hero {
+        padding: 65px 0 75px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-content > p {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-note {
+        margin-top: 22px;
+    }
+
+    .hero-visual {
+        min-height: 350px;
+        margin-top: 15px;
+    }
+
+    .fingerprint-card {
+        width: min(90%, 340px);
+        height: 330px;
+    }
+
+    .fingerprint {
+        font-size: 125px;
+    }
+
+    .card-one {
+        right: 0;
+    }
+
+    .card-two {
+        left: 0;
+    }
+
+    .awareness,
+    .learning,
+    .how-it-works,
+    .detective {
+        padding: 75px 0;
+    }
+
+    .features-grid,
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card,
+    .step-card {
+        padding: 27px;
+    }
+
+    .detective-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .detective-content > p {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .detective-box {
+        transform: none;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* ---------- 17. SMALL MOBILE ---------- */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .nav-actions {
+        gap: 8px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-content > p {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+    .hero-visual {
+        min-height: 310px;
+    }
+
+    .fingerprint-card {
+        height: 290px;
+    }
+
+    .fingerprint {
+        font-size: 105px;
+    }
+
+    .floating-card {
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-card p {
+        min-height: auto;
+    }
+
+    .section-heading {
+        margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+}
+
+
+/* ---------- 18. ENGLISH LAYOUT SUPPORT ---------- */
+
+html[dir="ltr"] body {
+    font-family: var(--font-en);
+}
+
+html[dir="ltr"] body,
+html[dir="ltr"] button,
+html[dir="ltr"] input {
+    font-family: var(--font-en);
+}
+
+html[dir="ltr"] .course-level {
+    left: auto;
+    right: 20px;
+}
+
+html[dir="ltr"] .card-one {
+    right: auto;
+    left: -20px;
+}
+
+html[dir="ltr"] .card-two {
+    left: auto;
+    right: -25px;
+}
+
+html[dir="ltr"] .step-number {
+    left: auto;
+    right: 22px;
+}
+
+html[dir="ltr"] .footer-links a:hover {
+    transform: translateX(4px);
+}
+
+html[dir="ltr"] .course-card > a:hover {
+    transform: translateX(5px);
+}
+
+html[dir="ltr"] .nav-links a::after {
+    right: auto;
+    left: 0;
+}
+
+
+/* ---------- 19. ACCESSIBILITY ---------- */
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
